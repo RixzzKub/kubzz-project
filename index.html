@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permintaan Maaf</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #e91e63;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .heart {
+            font-size: 3em;
+            color: #e91e63;
+            animation: heartbeat 1.5s infinite;
+        }
+        button {
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #c2185b;
+        }
+        .hidden {
+            display: none;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .flowers {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .flower {
+            position: absolute;
+            font-size: 2em;
+            color: #ff69b4;
+            animation: fall 5s linear infinite;
+        }
+        @keyframes fall {
+            from { transform: translateY(-100vh); }
+            to { transform: translateY(100vh); }
+        }
+    </style>
+</head>
+<body>
+    <div class="flowers" id="flowers"></div>
+    <div class="container">
+        <div class="heart">❤️</div>
+        <h1>Maafkan Aku, Sayang</h1>
+        <p id="message">Aku tahu aku telah membuat kesalahan. Aku minta maaf dari lubuk hati yang paling dalam. Kamu adalah segalanya bagiku, dan aku tidak ingin kehilanganmu. Tolong maafkan aku...</p>
+        <button id="revealBtn">Klik untuk Pesan Khusus</button>
+        <div id="specialMessage" class="hidden">
+            <p>Ingat saat kita pertama kali bertemu? Aku jatuh cinta sejak itu. Aku janji akan lebih baik lagi. Aku mencintaimu lebih dari apa pun. Maukah kamu memaafkanku?</p>
+            <button id="forgiveBtn">Ya, Aku Maafkan!</button>
+        </div>
+    </div>
+
+    <script>
+        // Animasi bunga jatuh
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.textContent = '🌸';
+            flower.style.left = Math.random() * 100 + '%';
+            flower.style.animationDelay = Math.random() * 5 + 's';
+            document.getElementById('flowers').appendChild(flower);
+            setTimeout(() => flower.remove(), 5000);
+        }
+        setInterval(createFlower, 1000);
+
+        // Interaksi tombol
+        document.getElementById('revealBtn').addEventListener('click', function() {
+            document.getElementById('message').classList.add('hidden');
+            document.getElementById('specialMessage').classList.remove('hidden');
+            this.style.display = 'none';
+        });
+
+        document.getElementById('forgiveBtn').addEventListener('click', function() {
+            alert('Terima kasih, sayang! Aku mencintaimu! ❤️');
+            // Tambahkan efek confetti atau animasi lainnya jika diinginkan
+        });
+    </script>
+</body>
+</html>
